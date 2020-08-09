@@ -1,13 +1,6 @@
-
-
-
-
-### TODO: DESIGN THIS PROJECT ON PAPER/WHITEBOARD BEFORE DOING MORE
-
-
-
-
-
+# Vishal's Neural Net
+# Please ignore my disregard for organization haha
+# TODO: Make this a class and organize it better
 
 import math
 import numpy as np
@@ -67,7 +60,7 @@ def cost(observed, expected):
 def cost_prime(observed, expected):
     expected_vector = np.zeros(shape=(10, 1))
     expected_vector[expected] = 1
-    # Note: This is meant to output a vector b/c it depends on what the cost for each activation is TODO: Or is it?
+    # Note: This is meant to output a vector b/c it depends on what the cost for each activation is 
     return 2 * ( observed - expected_vector )
 
 ## The sigmoid activation function and derivative
@@ -109,7 +102,6 @@ def backprop(layer, dCda):
     dzda = weights[layer-1].T # weights from input to every output -- TODO: is this transposed?
 
     z = weights[layer-1] @ layers[layer-1] + biases[layer-1]
-
     dadz = sigmoid_prime(z) # TODO: Indexed properly? no. Check weights transpose?
     error = dCda * dadz
 
@@ -174,8 +166,8 @@ def gradient_descent(batch_size):
     pprint(cost(layers[3], y[training_example]))
 
     # Divide all gradients and costs by batch size
-    avg_weight_gradient = [x / batch_size for x in avg_weight_gradient]
-    avg_bias_gradient = [x / batch_size for x in avg_bias_gradient]
+    # avg_weight_gradient = [x / batch_size for x in avg_weight_gradient]
+    # avg_bias_gradient = [x / batch_size for x in avg_bias_gradient]
     avg_cost = avg_cost/batch_size
     accuracy = correct/batch_size
     
